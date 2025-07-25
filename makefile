@@ -5,7 +5,7 @@ CFLAG = -c
 
 all: main
 
-main: main.o gpio.o
+main1: main.o gpio.o cli.o
 	$(CC) $^ -o $@
 
 %.o: %.c
@@ -14,4 +14,4 @@ main: main.o gpio.o
 .PHONY: clear
 
 clear: 
-	rm -f *.o main
+	rm -f *.o main1
