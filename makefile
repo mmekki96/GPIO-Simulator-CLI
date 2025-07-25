@@ -5,7 +5,7 @@ CFLAG = -c
 
 all: main
 
-main1: main.o gpio.o cli.o
+main: main.o gpio.o cli.o
 	$(CC) $^ -o $@
 
 %.o: %.c
