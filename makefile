@@ -14,4 +14,4 @@ main: main.o gpio.o cli.o
 .PHONY: clear
 
 clear: 
-	rm -f *.o main1
+	rm -f *.o main
