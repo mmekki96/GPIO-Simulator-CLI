@@ -40,7 +40,7 @@ Chaque ports GPIO contient uniquement 8 pins.
 
 1.  **Cloner le dépôt :**
     ```bash
-    git clone [https://github.com/mmekki96/GPIO-Simulator-CLI.git](https://github.com/mmekki96/GPIO-Simulator-CLI.git)
+    git clone https://github.com/mmekki96/GPIO-Simulator-CLI.git
     cd GPIO-Simulator-CLI
     ```
 2.  **Compiler le projet :**
@@ -54,7 +54,7 @@ Chaque ports GPIO contient uniquement 8 pins.
 
 ## Exemples d'utilisation
 
->> set gpioa 4 high
->> mode gpioc 3 out
->> toggle gpiob 1
->> pinmode gpiod 7 
+`set gpioa 4 high`
+`mode gpioc 3 out`
+`toggle gpiob 1`
+`pinmode gpiod 7` 
