@@ -1,60 +1,63 @@
-# Simulateur CLI pour GPIO
+# ⚡ GPIO Simulator CLI
 
-Ce projet est un simulateur d'interface en ligne de commande (CLI) développé en C pur, conçu pour interagir et simuler le comportement de General Purpose Input/Output (GPIO) sur un microcontrôleur. Il offre la possibilité de contrôler l'état des pins et de visualiser les registres de mode et de données.
+![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
+![Makefile](https://img.shields.io/badge/Makefile-555?style=flat)
 
-## Fonctionnalités
+A command-line tool written in pure C that simulates the GPIO register behavior of a microcontroller. Control pin states, set directions, toggle outputs, and inspect data and mode registers — all from your terminal.
 
-* **Commandes spécifique du CLI :**
-    * `help` : Affiche les commandes pret à étre utilisé.
-    * `exit` : Terminé le programme.
+### Prerequisites
+* **Compiler:** `gcc`
+* **Build Tool:** `make`
+* **Environment:** Linux
 
-* **Contrôle de l'état des pins :**
-    * `set gpio<Port> pin<Num> high` : Définit l'état d'une pin spécifique à HIGH.
-    * `set gpio<Port> pin<Num> low` : Définit l'état d'une pin spécifique à LOW.
-    *(Ex: `set gpioa 5 high`)*
-* **Contrôle de modes des pins :**
-    * `mode gpio<Port> pin<Num> in` : Définit le mode pin spécifique à input.
-    * `mode gpio<Port> pin<Num> out` : Définit le mode pin spécifique à output.
-    *(Ex: `mode gpioa 5 out`)*
-* **Toggle l'état des pins :**
-    * `toggle gpio<Port> pin<Num>` : Toggle l'état d'une pin HIGH ou LOW.
-    *(Ex: `toggle gpioa 5`)*
-* **Affichage des registres :**
-    * `regst gpio<Port>` : Affiche l'état simulé du registre de données (valeur actuelle des pins) pour un port GPIO donné.
-    * `regmode gpio<Port>` : Affiche l'état simulé du registre de mode (Input/Output) pour un port GPIO donné.
-    *(Ex: `regst gpiob`)*
-* **Affichage de l'état d'une pin :**
-    * `pinst gpio<Port> pin<Num>` : Affiche l'état actuel (HIGH/LOW) d'une pin spécifique.
-    *(Ex: `pinst gpioc 6`)*
+## Features
 
-Les ports GPIO pris en charge sont A, B, C et D.
-Chaque ports GPIO contient uniquement 8 pins.
+### General commands
+- `help` — list all available commands
+- `exit` — quit the simulator
 
-## Technologies Utilisées
+### Pin state control
+- `set <port> <pin> high` — drive a pin HIGH
+- `set <port> <pin> low` — drive a pin LOW
+- `toggle <port> <pin>` — toggle a pin between HIGH and LOW
 
-* **Langage :** C
-* **Compilateur :** GCC
-* **Build System :** Makefile
+### Pin direction control
+- `mode <port> <pin> in` — set pin as input
+- `mode <port> <pin> out` — set pin as output
 
-## Comment Compiler et Exécuter
+### Register inspection
+- `regst <port>` — display the simulated data register (current pin states)
+- `regmode <port>` — display the simulated mode register (input/output directions)
+- `pinst <port> <pin>` — display the current state of a specific pin
 
-1.  **Cloner le dépôt :**
-    ```bash
-    git clone https://github.com/mmekki96/GPIO-Simulator-CLI.git
-    cd GPIO-Simulator-CLI
-    ```
-2.  **Compiler le projet :**
-    ```bash
-    make
-    ```
-3.  **Exécuter le simulateur :**
-    ```bash
-    ./main
-    ```
+> Supported ports: `gpioa`, `gpiob`, `gpioc`, `gpiod` — 8 pins each (0-7).
 
-## Exemples d'utilisation
+---
 
-`set gpioa 4 high`
-`mode gpioc 3 out`
-`toggle gpiob 1`
-`pinmode gpiod 7` 
+## Build & run
+
+The project uses a modular `src/include` structure. Use the provided shell script to automate the creation of the `build/` directory and run the simulator:
+
+```bash
+git clone https://github.com/mmekki96/GPIO-Simulator-CLI.git
+cd GPIO-Simulator-CLI
+chmod +x start.sh
+./start.sh
+```
+
+---
+
+
+## Usage examples
+
+```bash
+set gpioa 4 high
+mode gpioc 3 out
+toggle gpiob 1
+pinst gpiod 7
+regst gpioa
+```
+
+---
+
+Part of my embedded systems portfolio — [github.com/mmekki96](https://github.com/mmekki96)
