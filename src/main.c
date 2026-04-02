@@ -3,6 +3,33 @@
 #include <string.h>
 #include "cli.h"
 
+void display_welcome_banner() {
+	printf("========================================\n");
+	printf("       REGISTER SIMULATOR CLI           \n");
+    printf("========================================\n");
+    printf(" Welcome! Type a command to begin.\n\n");
+    printf("  -help    Show the commands menu\n");
+    printf("  -exit    Exit the simulator\n");
+    printf("----------------------------------------\n\n");
+}
+
+void display_menu() {
+	printf("\n--- REGISTER SIMULATOR COMMANDS ---\n");
+    printf("\n[ Pin Manipulation ]\n");
+    printf("  set <PORT> <PIN> <STATE>    Set pin state (0: Low, 1: High)\n");
+    printf("  toggle <PORT> <PIN>         Invert current pin state\n");
+    printf("\n[ Status & Monitoring ]\n");
+    printf("  regst <PORT>                Display full register status\n");
+    printf("  pinst <PORT> <PIN>          Show state of a specific pin\n");
+    printf("\n[ Configuration ]\n");
+    printf("  regmode <PORT>              Show port configuration mode\n");
+    printf("  pinmode <PORT> <PIN>        Show mode of a specific pin\n");
+    printf("\n[ System ]\n");
+    printf("  -help                       Show this menu\n");
+    printf("  -exit                       Close simulator\n");
+    printf("-----------------------------------\n\n");
+}
+
 int main() {
 	GPIO* gpio;
 	PinState pin_state;
@@ -16,14 +43,8 @@ int main() {
 	gpio_create(&GPIOx[GPIOC]);
 	gpio_create(&GPIOx[GPIOD]);
 
-    	printf("Commands Format:\nTo write pin: set <GPIOx> <num_pin> <state>\n");
-	printf("To toggle pin: toggle <GPIOx> <num_pin>\n");
-	printf("To change the mode of a pin: mode <GPIOx> <num_pin> <mode>\n");
-	printf("To print the state of register: regst <GPIOx>\n");
-	printf("To print the state of a single pin: pinst <GPIOx> <num_pin>\n");
-	printf("To print the register mode: regmode <GPIOx> \n");
-	printf("To print a target pin mode: pinmode <GPIOx> <num_pin> \n");
-	
+    	display_welcome_banner();
+
 	while(1) {
 		int num_tokens = 0;
 		printf(">> ");
@@ -36,12 +57,7 @@ int main() {
 		num_tokens = getCliArg(tokens);	
 		if (num_tokens == 1) {
 			if (strcmp(command, "help") == 0) {
-				printf("set <GPIOx> <num_pin> <pin_state>\n");
-				printf("toggle <GPIOx> <num_pin>\n");
-			       	printf("regst <GPIOx>\n");
-				printf("pinst <GPIOx> <num_pin>\n");
-				printf("regmode <GPIOx>\n");
-				printf("pinmode <GPIOx> <num_pin>\n");	
+				display_menu();
 			}
 			else if (strcmp(command, "exit") == 0) {
 				printf("GoodBye!\n");
