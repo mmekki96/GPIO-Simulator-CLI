@@ -16,7 +16,7 @@ void display_welcome_banner() {
 void display_menu() {
 	printf("\n--- REGISTER SIMULATOR COMMANDS ---\n");
     printf("\n[ Pin Manipulation ]\n");
-    printf("  set <PORT> <PIN> <STATE>    Set pin state (0: Low, 1: High)\n");
+    printf("  set <PORT> <PIN> <STATE>    Set pin state (\'low\', \'high\')\n");
     printf("  toggle <PORT> <PIN>         Invert current pin state\n");
     printf("\n[ Status & Monitoring ]\n");
     printf("  regst <PORT>                Display full register status\n");
